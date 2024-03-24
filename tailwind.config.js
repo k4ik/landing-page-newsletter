@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx,vue}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'bg-overlay': '#09090B',
+      }
+    },
   },
   plugins: [],
 }
