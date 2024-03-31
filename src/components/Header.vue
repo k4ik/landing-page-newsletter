@@ -1,7 +1,7 @@
 <template>
     <header>
         <img src="../assets/images/logo.svg" alt="tailwind logo">
-        <button>Cadastrar</button>
+        <button @click="$emit('openOverlay')">Cadastrar</button>
     </header>
 </template>
 
