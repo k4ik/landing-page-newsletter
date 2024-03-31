@@ -1,0 +1,54 @@
+main {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px 20px;
+  
+    article {
+      margin-top: 40px;
+      max-width: 505px;
+      .main_h1 {
+        font-size: 48px;
+        font-weight: 700;
+        line-height: 60.24px;
+        color: $text-color;
+        margin: 14px 0;
+      }
+  
+      span {
+        color: $main-color;
+      }
+  
+      .main_p {
+        color: $text-color;
+        margin-top: 14px;
+        text-align: justify;
+      }
+  
+      .main_button {
+        background-color: $main-color;
+        padding: 10px 24px;
+        border-radius: 4px;
+        color: #111829;
+        border: none;
+        width: 100%;
+        margin: 37px 0;
+      }
+  
+      .terms {
+        color: $main-color;
+  
+        a {
+          color: $main-color;
+          font-weight: bold;
+        }
+      }
+    }
+  
+    aside {
+      max-width: 505px;
+  
+      img {
+        width: 100%;
+      }
+    }
+  }
