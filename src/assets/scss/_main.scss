@@ -32,6 +32,11 @@ main {
         border: none;
         width: 100%;
         margin: 37px 0;
+
+        &:hover {
+          background: linear-gradient(90.6deg, #13B4A7 18.38%, rgba(16, 170, 170, 0.689722) 51.22%, #0893B0 83.27%);
+          transition: .2s;
+        }
       }
   
       .terms {
