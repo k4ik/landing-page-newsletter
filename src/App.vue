@@ -1,6 +1,7 @@
 <template>
   <div>
     <Overlay v-if="viewOverlay" @closeOverlay="closeOverlay" />
+    <Popup />
     <Header @openOverlay="openOverlay" />
     <main>
       <article>
@@ -32,6 +33,7 @@
 </template>
 
 <script>
+import Popup from "./components/Popup.vue";
 import Header from "./components/Header.vue";
 import Overlay from "./components/Overlay.vue";
 
@@ -39,6 +41,7 @@ export default {
   components: {
     Header,
     Overlay,
+    Popup
   },
   data() {
     return {
@@ -61,6 +64,8 @@ export default {
 @import "./assets/scss/variables";
 @import "./assets/scss/hiring";
 @import "./assets/scss/main";
+@import "./assets/scss/popup";
+
 
 * {
   margin: 0;
