@@ -18,10 +18,18 @@
         if(empty($name) || empty($email)) {
             echo "Preencha os campos!";
         } else {
-            $query = "INSERT INTO users(name, email) VALUES('$name','$email');";
+            $query = "SELECT * FROM users WHERE email='$email';";
             $check_result = pg_query($con, $query);
+
+            if(pg_num_rows($check_result) == 1) {
+                echo "Esse email já foi cadastrado";
+                return;
+            }
+
+            $query2 = "INSERT INTO users(name, email) VALUES('$name','$email');";
+            $check_result2 = pg_query($con, $query2);
     
-            if(!$check_result) {
+            if(!$check_result2) {
                 echo "Algo deu errado! Tente novamente";
             } else {
                 $mail = new PHPMailer(true);
