@@ -9,25 +9,19 @@
         Complete o cadastro para participar da newsletter e acessar as
         informações da newsletter
       </p>
-      <form class="overlay_form">
+      <form class="overlay_form" method="post" action="http://localhost:8000/controllers/SignUpController.php">
         <fieldset>
           <label for="name">Nome</label>
-          <input type="text" placeholder="Digite seu nome aqui" name="name" />
+          <input type="text" placeholder="Digite seu nome aqui" name="name" autocomplete="off" />
         </fieldset>
         <fieldset>
           <label for="email">Email</label>
-          <input
-            type="email"
-            placeholder="Digite seu melhor email"
-            name="email"
-          />
+          <input type="email" placeholder="Digite seu melhor email" name="email" autocomplete="off" />
         </fieldset>
         <fieldset class="overlay_terms">
           <input type="checkbox" />
-          <span
-            >Eu aceito os <a href="#">Termos de serviço</a> para acessar as
-            informações da newsletter</span
-          >
+          <span>Eu aceito os <a href="#">Termos de serviço</a> para acessar as
+            informações da newsletter</span>
         </fieldset>
         <button class="overlay_button">Cadastrar na nossa newsletter</button>
       </form>
@@ -37,7 +31,7 @@
 
 <script>
 export default {
-  
+
 };
 </script>
 
