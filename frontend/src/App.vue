@@ -1,6 +1,7 @@
 <template>
   <div>
-    <Overlay v-if="viewOverlay" @closeOverlay="closeOverlay" />
+    <Message v-if="viewMessage" :message="message"/>
+    <Overlay v-if="viewOverlay" @closeOverlay="closeOverlay" @fetchData="fetchData" />
     <Popup />
     <Header @openOverlay="openOverlay" />
     <main>
@@ -36,16 +37,20 @@
 import Popup from "./components/Popup.vue";
 import Header from "./components/Header.vue";
 import Overlay from "./components/Overlay.vue";
+import Message from "./components/Message.vue";
 
 export default {
   components: {
     Header,
     Overlay,
-    Popup
+    Popup,
+    Message,
   },
   data() {
     return {
       viewOverlay: false,
+      viewMessage: false,
+      message: null,
     };
   },
   methods: {
@@ -55,6 +60,27 @@ export default {
     closeOverlay() {
       this.viewOverlay = false;
     },
+    fetchData() {
+      var formData = new FormData(document.querySelector('.overlay_form'));
+
+      fetch("http://localhost:8000/controllers/SignUpController.php", {
+          method: "POST",
+          body: formData
+      })
+      .then(response => response.text())
+      .then(data => {
+          console.log(data);
+          this.viewMessage = true;
+          this.message = data;
+
+          setTimeout(()=>{
+            this.viewMessage = false;
+          }, 5000)
+      })
+      .catch(error => {
+          console.error("Erro:" . error);
+      })
+    }
   },
 };
 </script>
@@ -65,7 +91,7 @@ export default {
 @import "./assets/scss/hiring";
 @import "./assets/scss/main";
 @import "./assets/scss/popup";
-
+@import "./assets/scss/message";
 
 * {
   margin: 0;
