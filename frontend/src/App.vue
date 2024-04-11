@@ -72,11 +72,15 @@ export default {
           console.log(data);
           this.viewMessage = true;
           this.message = data;
-
+          
           setTimeout(()=>{
             this.viewMessage = false;
           }, 5000)
-      })
+
+          if(data  == "Olhe sua caixa de email!"){
+            this.closeOverlay();
+          }
+        })
       .catch(error => {
           console.error("Erro:" . error);
       })

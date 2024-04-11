@@ -16,7 +16,7 @@
           </fieldset>
           <fieldset>
             <label for="email">Email</label>
-            <input type="email" placeholder="Digite seu melhor email" name="email" autocomplete="on" />
+            <input type="email" placeholder="Digite seu melhor email" name="email" autocomplete="off" />
           </fieldset>
           <fieldset class="overlay_terms">
             <input type="checkbox" />
