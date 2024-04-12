@@ -1,7 +1,10 @@
 <template>
     <header>
         <img src="../assets/images/logo.svg" alt="tailwind logo">
-        <button @click="$emit('openOverlay')">Cadastrar</button>
+        <nav>
+            <router-link to="/login">Entrar</router-link>
+            <button @click="$emit('openOverlay')">Cadastrar</button>
+        </nav>
     </header>
 </template>
 
@@ -12,5 +15,5 @@
 </script>
 
 <style lang="scss" scoped>
-    @import '../assets/scss/header';
+@import "../assets/scss/header";
 </style>
