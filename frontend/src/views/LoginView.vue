@@ -32,16 +32,14 @@
           
           if(data == "Logado com sucesso!") {
             this.$router.push("/create-post")
-          }
-
-          this.message = data;
-          this.viewMessage = true;
-          
-          setTimeout(()=>{
-            this.viewMessage = false;
-          }, 5000)
-
-          
+          } else {
+            this.message = data;
+            this.viewMessage = true;
+            
+            setTimeout(()=>{
+              this.viewMessage = false;
+            }, 5000)
+          }          
         })
         .catch(error => {
           console.error("Erro" . error)

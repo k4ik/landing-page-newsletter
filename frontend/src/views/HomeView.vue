@@ -51,6 +51,8 @@
         viewOverlay: false,
         viewMessage: false,
         message: null,
+        inputName: "",
+        inputEmail: ""
       };
     },
     methods: {
@@ -76,6 +78,9 @@
             setTimeout(()=>{
               this.viewMessage = false;
             }, 5000)
+
+            this.inputName = "";
+            this.inputEmail = "";
   
             if(data  == "Olhe sua caixa de email!"){
               this.closeOverlay();

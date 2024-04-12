@@ -12,11 +12,11 @@
         <form class="overlay_form">
           <fieldset>
             <label for="name">Nome</label>
-            <input type="text" placeholder="Digite seu nome aqui" name="name" autocomplete="off" />
+            <input type="text" placeholder="Digite seu nome aqui" name="name" autocomplete="off" v-model="inputName" />
           </fieldset>
           <fieldset>
             <label for="email">Email</label>
-            <input type="email" placeholder="Digite seu melhor email" name="email" autocomplete="off" />
+            <input type="email" placeholder="Digite seu melhor email" name="email" autocomplete="off" v-model="inputEmail" />
           </fieldset>
           <fieldset class="overlay_terms">
             <input type="checkbox" />
