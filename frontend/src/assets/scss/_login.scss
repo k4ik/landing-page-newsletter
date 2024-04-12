@@ -1,0 +1,52 @@
+@import "./variables";
+
+
+main {
+    background-color: #09090B;
+    padding: 40px 20px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    .login_form {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        margin-top: 14px;
+
+        fieldset {
+            display: flex;
+            flex-direction: column;
+            border: none;
+            gap: 6px;
+
+            label {
+                font-weight: 700;
+                font-size: 14px;
+            }
+
+            input {
+                background-color:#27272A;
+                padding: 8px 16px 8px 16px;
+                outline: none;
+                border: none;
+                color: grey;
+            }
+        }
+        
+        .login_button{
+            padding: 10px 24px;
+            border-radius: 4px;
+            background-color: $main-color;
+            border: none;
+
+            &:hover {
+                background: linear-gradient(90.6deg, #13B4A7 18.38%, rgba(16, 170, 170, 0.689722) 51.22%, #0893B0 83.27%);
+                transition: .2s;
+            }
+        }
+    }
+}
