@@ -2,8 +2,11 @@
     header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Methods: POST");
     header("Access-Control-Allow-Headers: Content-Type");
-
+    
+    require '../vendor/autoload.php';
     require '../vendor/includes/conn.php';
+
+    use Respect\Validation\Validator as v;
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         $email = $_POST["email"];
@@ -11,6 +14,11 @@
 
         if(empty($email) || empty($password)){
             echo "Preencha os campos!";
+            return;
+        }
+
+        if(!v::email()->validate($email)) {
+            echo "Email inválido!";
             return;
         }
 
