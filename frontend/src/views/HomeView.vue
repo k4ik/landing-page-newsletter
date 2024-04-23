@@ -65,7 +65,7 @@
       fetchData() {
         var formData = new FormData(document.querySelector('.overlay_form'));
   
-        fetch("http://localhost:8000/controllers/SignUpController.php", {
+        fetch("http://localhost:8000/signup", {
             method: "POST",
             body: formData
         })
@@ -101,6 +101,5 @@
 
   .body {
     background-color: $bg-color;
-    height: 100vh;
   }
   </style>

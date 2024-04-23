@@ -22,7 +22,7 @@
     methods: {
       fetchData() {
         let formData = new FormData(document.querySelector('.login_form'));
-        fetch('http://localhost:8000/controllers/LoginController.php', {
+        fetch('http://localhost:8000/login', {
           method: "POST",
           body: formData
         })

@@ -23,7 +23,7 @@
     methods: {
       fetchData() {
         let formData = new FormData(document.querySelector('.newsletter_form'));
-        fetch('http://localhost:8000/controllers/PostController.php', {
+        fetch('http://localhost:8000/post', {
           method: "POST",
           body: formData
         })
