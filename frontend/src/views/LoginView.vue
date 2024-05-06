@@ -26,20 +26,25 @@
           method: "POST",
           body: formData
         })
-        .then(response => response.text())
+        .then(response => response.json())
         .then(data => {
           console.log(data)
           
-          if(data == "Logado com sucesso!") {
-            this.$router.push("/create-post")
-          } else {
-            this.message = data;
+          if(data.error) {
+            let error = data.error
+            this.message = error;
             this.viewMessage = true;
-            
+
             setTimeout(()=>{
-              this.viewMessage = false;
+                this.viewMessage = false;
             }, 5000)
-          }          
+          } 
+          
+          if(data.token) {
+            let token = data.token
+            localStorage.setItem('token', token);
+            this.$router.push("/create-post");
+          }        
         })
         .catch(error => {
           console.error("Erro" . error)

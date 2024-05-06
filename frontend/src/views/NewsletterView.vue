@@ -13,6 +13,9 @@
             </fieldset>
             <button @click.prevent="fetchData">Publicar</button>
         </form>
+        <div class="logout-div">
+          <button @click.prevent="logout">Sair</button>
+        </div>
     </main>
 </template>
 
@@ -46,6 +49,10 @@
         .catch(error => {
           console.error("Erro" . error)
         })
+      },
+      logout() {
+        localStorage.removeItem('token');
+        this.$router.push("/");
       }
     },
     components: {

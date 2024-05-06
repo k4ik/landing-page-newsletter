@@ -50,4 +50,19 @@ main {
             }
         }
     }
+
+    .logout-div {
+        position: absolute;
+        bottom: 5%;
+        right: 3%;
+        box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.253);
+
+        button {
+            background-color: rgb(255, 58, 58);
+            border: red 1px solid;
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 12px;
+        }
+    }
 }
