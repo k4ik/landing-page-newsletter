@@ -3,7 +3,11 @@
 header {
     display: flex;
     justify-content: space-between;
-    padding: 22px 20px;
+    padding: 40px 60px 0;
+
+    img {
+        width: 50px;
+    }
 
     nav {
         display: flex;
@@ -12,7 +16,7 @@ header {
     
         button {
             background-color: $main-color;
-            padding: 10px 24px;
+            padding: 10px 12px;
             border-radius: 4px;
             border: none;
     
@@ -24,6 +28,7 @@ header {
         a {
             color: $text-color;
             text-decoration: none;
+            font-size: 16px;
     
             &:hover {
                 text-decoration: underline;

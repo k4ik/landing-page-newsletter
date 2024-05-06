@@ -22,4 +22,8 @@
     background: transparent;
     border: none;
   }
+
+  @media (max-width:518px) {
+    display: none;
+  }
 }

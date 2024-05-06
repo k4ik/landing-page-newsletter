@@ -1,35 +1,37 @@
 <template>
     <div class="body">
-      <Message v-if="viewMessage" :message="message"/>
-      <Overlay v-if="viewOverlay" @closeOverlay="closeOverlay" @fetchData="fetchData" />
-      <Popup />
-      <Header @openOverlay="openOverlay" />
-      <main>
-        <article>
-          <div class="hiring">
-            <span>Tecnologias</span>
-            <p>Estamos por dentro dela para ajudar você</p>
-            <button><img src="../assets/images/arrow.svg" alt="arrow" /></button>
-          </div>
-          <h1 class="main_h1">
-            O Melhor jeito de <br /><span>ficar informado</span>
-          </h1>
-          <p class="main_p">
-            Se informe sobre os principais acontecimentos e novidades no mundo da
-            tecnologia e não perca oportunidades de estudo e vagas dentro da àrea.
-          </p>
-          <button class="main_button" @click="openOverlay">
-            Cadastre-se na nossa newsletter
-          </button>
-          <p class="terms">
-            Ao cadastrar na newsletter com seus dados você aceita os
-            <a href="#">termos de serviço</a>.
-          </p>
-        </article>
-        <aside>
-          <img src="../assets/images/image.svg" alt="image" />
-        </aside>
-      </main>
+      <div class="main">
+        <Message v-if="viewMessage" :message="message"/>
+        <Overlay v-if="viewOverlay" @closeOverlay="closeOverlay" @fetchData="fetchData" />
+        <Popup />
+        <Header @openOverlay="openOverlay" />
+        <main>
+          <article>
+            <div class="hiring">
+              <span>Tecnologias</span>
+              <p>Estamos por dentro dela para ajudar você</p>
+              <button><img src="../assets/images/arrow.svg" alt="arrow" /></button>
+            </div>
+            <h1 class="main_h1">
+              O Melhor jeito de <span>ficar informado</span>
+            </h1>
+            <p class="main_p">
+              Se informe sobre os principais acontecimentos e novidades no mundo da
+              tecnologia e não perca oportunidades de estudo e vagas dentro da àrea.
+            </p>
+            <button class="main_button" @click="openOverlay">
+              Cadastre-se na nossa newsletter
+            </button>
+            <p class="terms">
+              Ao cadastrar na newsletter com seus dados você aceita os
+              <a href="#">termos de serviço</a>.
+            </p>
+          </article>
+          <aside>
+            <img src="../assets/images/image.svg" alt="image" />
+          </aside>
+        </main>
+      </div>
     </div>
   </template>
   
@@ -98,8 +100,13 @@
   @import "../assets/scss/variables";
   @import "../assets/scss/main";
   @import "../assets/scss/hiring";
-
   .body {
     background-color: $bg-color;
+  }
+
+  .main {
+    background-color: $bg-color;
+    max-width: 1400px;
+    margin: 0 auto;
   }
   </style>
