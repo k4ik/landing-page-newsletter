@@ -28,11 +28,8 @@
         })
         .then(response => response.json())
         .then(data => {
-          console.log(data)
-          
           if(data.error) {
-            let error = data.error
-            this.message = error;
+            this.message = data.error;
             this.viewMessage = true;
 
             setTimeout(()=>{
@@ -41,8 +38,7 @@
           } 
           
           if(data.token) {
-            let token = data.token
-            localStorage.setItem('token', token);
+            localStorage.setItem('token', data.token);
             this.$router.push("/create-post");
           }        
         })

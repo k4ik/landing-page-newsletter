@@ -9,12 +9,12 @@
         $email = $_POST["email"];
 
         if(empty($name) || empty($email)) {
-            echo "Preencha os campos!";
+            echo json_encode(["error" => "Preencha os campos"]);
             return;
         }
 
         if(!v::email()->validate($email)) {
-            echo "Email inválido!";
+            echo json_encode(["error" => "Email inválido"]);
             return;
         }
 
@@ -22,7 +22,7 @@
         $check_result = pg_query($con, $query);
 
         if(pg_num_rows($check_result) == 1) {
-            echo "Esse email já foi cadastrado";
+            echo json_encode(["error" => "Esse email já foi cadastrado"]);
             return;
         }
 
@@ -30,7 +30,7 @@
         $check_result2 = pg_query($con, $query2);
 
         if(!$check_result2) {
-            echo "Algo deu errado! Tente novamente";
+            echo json_encode(["error" => "Algo deu errado"]);
         } else {
             $mail = new PHPMailer(true);
             try {
@@ -55,9 +55,9 @@
                 $mail->Body .= "<p>Atenciosamente,<br>Newsletter.</p>";
     
                 $mail->send();
-                echo "Olhe sua caixa de email!";
+                echo json_encode(["success" => "Olhe sua caixa de email!"]);
             } catch (Exception $e) {
-                echo "Erro ao tentar enviar o email: {$mail->ErrorInfo}";
+                echo json_encode(["error" => "Erro ao tentar enviar o email"]);
             }
         }
         pg_close($con);

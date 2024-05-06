@@ -8,14 +8,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_SERVER["REQUEST_URI"] == "/post") 
     $content = $_POST["content"];
 
     if (empty($title) || empty($content)) {
-        echo "Preencha os campos";
+        echo json_encode(["error" => "Preencha os campos"]);
         return;
     }
 
     $query = "SELECT email FROM users";
     $check_result = pg_query($con, $query);
     if (!$check_result) {
-        echo "Algo deu errado";
+        echo json_encode(["error" => "Algo deu errado"]);
+
         return;
     } else {
         $rows = pg_fetch_all($check_result);
@@ -42,9 +43,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_SERVER["REQUEST_URI"] == "/post") 
             $mail->Body .= "<pre>$content</pre>";
 
             $mail->send();
-            echo "Post publicado com sucesso!";
+            echo json_encode(["success" => "Post publicado com sucesso!"]);
         } catch (Exception $e) {
-            echo "Erro ao tentar enviar o email: {$mail->ErrorInfo}";
+            echo json_encode(["error" => "Erro ao tentar enviar o email"]);
         }
     }
 }

@@ -30,18 +30,16 @@
           method: "POST",
           body: formData
         })
-        .then(response => response.text())
+        .then(response => response.json())
         .then(data => {
-          console.log(data)
-
-          this.message = data;
+          this.message = data.error;
           this.viewMessage = true;
           
           setTimeout(()=>{
             this.viewMessage = false;
           }, 5000)
 
-          if(data == "Post publicado com sucesso!") {
+          if(data.success) {
             this.inputTitle = "";
             this.inputContent = "";
           }

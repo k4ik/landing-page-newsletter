@@ -71,11 +71,10 @@
             method: "POST",
             body: formData
         })
-        .then(response => response.text())
+        .then(response => response.json())
         .then(data => {
-            console.log(data);
             this.viewMessage = true;
-            this.message = data;
+            this.message = data.error;
             
             setTimeout(()=>{
               this.viewMessage = false;
@@ -84,12 +83,12 @@
             this.inputName = "";
             this.inputEmail = "";
   
-            if(data  == "Olhe sua caixa de email!"){
+            if(data.success){
               this.closeOverlay();
             }
           })
         .catch(error => {
-            console.error("Erro:" . error);
+          console.error("Erro:" . error);
         })
       }
     },

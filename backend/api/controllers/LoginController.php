@@ -12,7 +12,7 @@
         }
 
         if(!v::email()->validate($email)) {
-            echo json_encode(["error" => "Emáil inválido!"]);
+            echo json_encode(["error" => "Email inválido!"]);
             return;
         }
 
