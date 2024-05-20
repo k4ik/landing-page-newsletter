@@ -73,6 +73,16 @@
         })
         .then(response => response.json())
         .then(data => {
+          if(data.success){
+            this.viewMessage = true;
+            this.message = data.success;
+
+            setTimeout(()=>{
+              this.viewMessage = false;
+            }, 5000)
+
+            this.closeOverlay();
+          } else {
             this.viewMessage = true;
             this.message = data.error;
             
@@ -82,10 +92,7 @@
 
             this.inputName = "";
             this.inputEmail = "";
-  
-            if(data.success){
-              this.closeOverlay();
-            }
+          }
           })
         .catch(error => {
           console.error("Erro:" . error);

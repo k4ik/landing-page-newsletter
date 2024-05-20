@@ -32,14 +32,16 @@
         })
         .then(response => response.json())
         .then(data => {
-          this.message = data.error;
           this.viewMessage = true;
+          this.message = data.error;
           
           setTimeout(()=>{
             this.viewMessage = false;
           }, 5000)
 
           if(data.success) {
+            this.message = data.success;
+
             this.inputTitle = "";
             this.inputContent = "";
           }
