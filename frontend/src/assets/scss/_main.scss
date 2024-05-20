@@ -61,11 +61,15 @@ main {
       }
     }
 
-    @media (max-width: 1086px) {
-     article {
-        max-width: 100%; // Ocupa metade da largura
-        text-align: left; // Alinha o texto à esquerda
-        margin-right: 20px; // Adiciona uma margem à direita para separar dos outros elementos
+    
+  }
+
+  @media (max-width: 1086px) {
+    main {
+      padding: 0 20px;
+      article {
+        max-width: 100%; 
+        text-align: left; 
       }
   
       aside {
