@@ -1,10 +1,10 @@
 <?php
-use Controller\AuthController;
-use Controller\PostController;
-
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Allow-Headers: Content-Type");
+
+use Controller\AuthController;
+use Controller\PostController;
 
 require './vendor/autoload.php';
 require './vendor/includes/conn.php';
