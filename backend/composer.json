@@ -3,5 +3,10 @@
         "phpmailer/phpmailer": "^6.9",
         "respect/validation": "^2.3",
         "firebase/php-jwt": "^6.10"
+    },
+    "autoload": {
+        "psr-4": {
+            "Controller\\": "controller/"
+        }
     }
 }
