@@ -7,8 +7,7 @@ use Controller\AuthController;
 use Controller\PostController;
 
 require './vendor/autoload.php';
-require './vendor/includes/conn.php';
-require './vendor/includes/mailer.php';
+require './includes/con.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
 $path = $_SERVER['REQUEST_URI'];
