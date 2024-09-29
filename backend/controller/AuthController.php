@@ -5,6 +5,8 @@ use Respect\Validation\Validator as v;
 use Controller\TokenController;
 use Controller\MailerController;
 
+require 'vendor/includes/con.php';
+
 class AuthController
 {
     private $con;

@@ -12,6 +12,8 @@ class PostController
     public function __construct($con)
     {
         $this->con = $con;
+        $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__ . '/../../'); 
+        $dotenv->load();
     }
 
     public function createPost($title, $content)
@@ -31,12 +33,12 @@ class PostController
 
         try {
             $mail->isSMTP();
-            $mail->Host       = SMTP_HOST;
+            $mail->Host       = getenv('SMTP_HOST');
             $mail->SMTPAuth   = true;
-            $mail->Username   = SMTP_USERNAME;
-            $mail->Password   = SMTP_PASSWORD;
+            $mail->Username   = getenv('SMTP_USERNAME');
+            $mail->Password   = getenv('SMTP_PASSWORD');
             $mail->SMTPSecure = 'ssl';
-            $mail->Port       = SMTP_PORT;
+            $mail->Port       = getenv('SMTP_PORT');
 
             $mail->setFrom("ajsjhsagwha@gmail.com", "Newsletter");
             $mail->isHTML(true);

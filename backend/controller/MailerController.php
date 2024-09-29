@@ -5,21 +5,25 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require './vendor/includes/mailer.php';
-
 class MailerController
 {
+    public function __construct()
+    {
+        $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__ . '/../../'); 
+        $dotenv->load();
+    }
+
     public function confirmSignup($email, $name)
     {
         $mail = new PHPMailer(true);
         try {
             $mail->isSMTP();
-            $mail->Host       = SMTP_HOST;
+            $mail->Host       = getenv('SMTP_HOST');
             $mail->SMTPAuth   = true;
-            $mail->Username   = SMTP_USERNAME;
-            $mail->Password   = SMTP_PASSWORD;
+            $mail->Username   = getenv('SMTP_USERNAME');
+            $mail->Password   = getenv('SMTP_PASSWORD');
             $mail->SMTPSecure = 'ssl';
-            $mail->Port       = SMTP_PORT;
+            $mail->Port       = getenv('SMTP_PORT');
 
             $mail->setFrom("ajsjhsagwha@gmail.com", "Support Team");
             $mail->addAddress($email);
