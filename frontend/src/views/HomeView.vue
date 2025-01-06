@@ -7,11 +7,6 @@
         <Header @openOverlay="openOverlay" />
         <main>
           <article>
-            <div class="hiring">
-              <span>Tecnologias</span>
-              <p>Estamos por dentro dela para ajudar você</p>
-              <button><img src="../assets/images/arrow.svg" alt="arrow" /></button>
-            </div>
             <h1 class="main_h1">
               O Melhor jeito de <span>ficar informado</span>
             </h1>
@@ -105,7 +100,6 @@
   <style lang="scss" scoped>
   @import "../assets/scss/variables";
   @import "../assets/scss/main";
-  @import "../assets/scss/hiring";
   .body {
     background-color: $bg-color;
   }

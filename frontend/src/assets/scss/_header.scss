@@ -4,6 +4,9 @@ header {
     display: flex;
     justify-content: space-between;
     padding: 40px 60px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
 
     img {
         width: 50px;
