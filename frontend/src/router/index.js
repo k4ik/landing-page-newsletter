@@ -15,6 +15,11 @@ const router = createRouter({
       component: () => import('../views/LoginView.vue')
     },
     {
+      path: '/painel',
+      name: 'painel',
+      component: () => import('../views/PainelView.vue'),
+    },
+    {
       path: '/create-post',
       name: 'newsletter',
       component: () => import('../views/NewsletterView.vue'),
