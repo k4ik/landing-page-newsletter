@@ -62,7 +62,7 @@
       fetchData() {
         var formData = new FormData(document.querySelector('.overlay_form'));
   
-        fetch("http://localhost:8000/signup", {
+        fetch("http://localhost:8000/api/signup", {
             method: "POST",
             body: formData
         })
