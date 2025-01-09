@@ -1,0 +1,118 @@
+@import '../scss/variables';
+
+.body {
+    background-color: $bg-color;
+    color: $text-color;
+    min-height: 100vh;
+  }
+  
+  .title {
+    text-align: center;
+    color: $main-color;
+    font-size: 2rem;
+    padding: 30px 0 10px;
+  }
+  
+  main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    padding: 1rem;
+  
+    article {
+      background-color: $second-color;
+      padding: 1rem;
+      border-radius: 5px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 600px;
+  
+      h2 {
+        color: $main-color;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+  
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 1rem;
+  
+        th, td {
+          border: 1px solid lighten($second-color, 10%);
+          padding: 0.5rem;
+          text-align: center;
+        }
+  
+        th {
+          background-color: lighten($second-color, 5%);
+          color: $text-color;
+        }
+  
+        tr:nth-child(even) {
+          background-color: lighten($second-color, 5%);
+        }
+  
+        button {
+          background-color: $main-color;
+          color: $bg-color;
+          border: none;
+          padding: 0.5rem 1rem;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s;
+  
+          &:hover {
+            background-color: darken($main-color, 10%);
+          }
+        }
+      }
+    }
+  }
+  
+  .post-btn {
+    background-color: $main-color;
+    color: $bg-color;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  
+    &:hover {
+      background-color: darken($main-color, 10%);
+    }
+  }
+  
+  button {
+    background-color: $main-color;
+    color: $bg-color;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    transition: background-color 0.3s;
+  
+    &:hover {
+      background-color: darken($main-color, 10%);
+    }
+  }
+  
+  // Responsiveness
+  @media (max-width: 768px) {
+    main {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  
+    .post-btn {
+      width: 100%;
+    }
+  }
+
+  
