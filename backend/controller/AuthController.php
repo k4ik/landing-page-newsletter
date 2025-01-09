@@ -28,18 +28,15 @@ class AuthController
             return;
         }
 
-        $query = "SELECT * FROM authors WHERE email='$email' AND password='$password';";
+        $query = "SELECT * FROM newsletter_owners WHERE email='$email' AND password='$password';";
 
         if (pg_num_rows(pg_query($this->con, $query)) == 1) {
             $row = pg_fetch_assoc(pg_query($this->con, $query));
             $id = $row["id"];
-            $name = $row["name"];
-
-            session_start();
-            $_SESSION["author"] = $name;
+            $email = $row["email"];
 
             $token = new TokenController();
-            $token->generateToken($id, $name);
+            $token->generateToken($id, $email);
         } else {
             echo json_encode(["error" => "Usuário não encontrado"]);
             return;
@@ -58,14 +55,14 @@ class AuthController
             return;
         }
     
-        $query = "SELECT * FROM newsletter WHERE email='$email';";
-    
+        $query = "SELECT * FROM newsletter_members WHERE email='$email';";
+        
         if (pg_num_rows(pg_query($this->con, $query)) == 1) {
             echo json_encode(["error" => "Esse email já foi cadastrado"]);
             return;
         }
     
-        $query2 = "INSERT INTO newsletter(name, email) VALUES('$name','$email');";
+        $query2 = "INSERT INTO newsletter_members(name, email) VALUES('$name','$email');";
     
         if (!pg_query($this->con, $query2)) {
             echo json_encode(["error" => "Algo deu errado"]);

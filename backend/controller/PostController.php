@@ -24,7 +24,6 @@ class PostController
         }
 
         $rows = $this->getEmails();
-        $author = $this->getAuthor();
         $mail = new PHPMailer(true);
 
         foreach ($rows as $row) {
@@ -46,7 +45,6 @@ class PostController
             $mail->Subject = "=?UTF-8?B?" . base64_encode("$title") . "?=";
             $mail->Body = "<h1>$title</h1>";
             $mail->Body .= "<pre>$content</pre>";
-            $mail->Body .= "<br><br><p>Publicado por ". $author ."</p>";
 
             $mail->send();
             echo json_encode(["success" => "Post publicado com sucesso!"]);
@@ -62,10 +60,10 @@ class PostController
         return $emails;
     }
 
-    public function getAuthor()
+    public function getPosts()
     {
-        session_start();
-        $author = $_SESSION["author"];
-        return $author;
+        $query = "SELECT id, title FROM posts";
+        $posts = pg_fetch_all(pg_query($this->con, $query));
+        return json_encode($posts);
     }
 }
