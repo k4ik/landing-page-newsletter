@@ -13,8 +13,7 @@
     export default {
         data() {
             return {
-                // mudar para True
-                showPopup: false,
+                showPopup: true,
             }
         },
         methods: {
