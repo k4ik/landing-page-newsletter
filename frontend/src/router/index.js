@@ -18,6 +18,7 @@ const router = createRouter({
       path: '/painel',
       name: 'painel',
       component: () => import('../views/PainelView.vue'),
+      meta: { requiresAuth: true } 
     },
     {
       path: '/create-post',
