@@ -12,67 +12,68 @@ require './vendor/autoload.php';
 require './includes/con.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
-$path = $_SERVER['REQUEST_URI'];
+$path   = $_SERVER['REQUEST_URI'];
 
-$authController = new AuthController($con);
-$postController = new PostController($con);
-$membersController = new MembersController($con);
-$ownersController = new OwnersController($con);
+$authController    = new AuthController($dbconn);
+$postController    = new PostController($dbconn);
+$membersController = new MembersController($dbconn);
+$ownersController  = new OwnersController($dbconn);
 
-switch($method) {
+switch ($method) {
     case 'POST':
-        if($path == '/api/signup') {
-            $name = $_POST["name"];
+        if ($path == '/api/signup') {
+            $name  = $_POST["name"];
             $email = $_POST["email"];
         
             $authController->signup($name, $email);
         }
 
-        if($path == '/api/login') {
-            $email = $_POST["email"];
+        if ($path == '/api/login') {
+            $email    = $_POST["email"];
             $password = $_POST["password"];
         
             $authController->login($email, $password);
         }
 
-        if($path == '/api/post') {
-            $title = $_POST["title"];
+        if ($path == '/api/post') {
+            $title   = $_POST["title"];
             $content = $_POST["content"];
         
             $postController->createPost($title, $content);
         }
 
-        if($path == '/api/owner') {
-            $email = $_POST["email"];
+        if ($path == '/api/owner') {
+            $email    = $_POST["email"];
             $password = $_POST["password"];
 
             $ownersController->addOwner($email, $password);
         }
         break;
     case 'GET':
-        if($path == '/api/members') {
+        if ($path == '/api/members') {
             $membersController->getNewsletterMembers();
         }
 
-        if($path == '/api/owners') {
+        if ($path == '/api/owners') {
             $ownersController->getNewsletterOwners();
         }
 
-        if($path == '/api/posts') {
+        if ($path == '/api/posts') {
             $postController-> getPosts();
         }
         break;
     case 'DELETE':
-        if($path == '/api/owner/'.$id) {
+        if ($path == '/api/owner/'.$id) {
             $ownersController->deleteOwner($id);
         }
 
-        if($path == '/api/member/'.$id) {
+        if ($path == '/api/member/'.$id) {
             $membersController->deleteMember($id);
         }
+        break;
     default:
         http_response_code(404);
         echo "404 Not Found";
 }
 
-pg_close($con);
+pg_close($dbconn);

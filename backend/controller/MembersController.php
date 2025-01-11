@@ -1,15 +1,15 @@
 <?php
 namespace Controller;
 
-require 'vendor/includes/con.php';
+require __DIR__.'/../includes/con.php';
 
 class MembersController
 {
-    private $con;
+    private $dbconn;
 
-    public function __construct($con)
+    public function __construct($dbconn)
     {
-        $this->con = $con;
+        $this->con = $dbconn;
     }
 
     public function getNewsletterMembers()
@@ -20,9 +20,9 @@ class MembersController
         return json_encode($members);
     }
 
-    public function deleteMember($id) 
+    public function deleteMember($id)
     {
         $query = "UPDATE newsletter_members SET visible = 1 WHERE id = $id";
-        pg_query($this->con , $query);
+        pg_query($this->con, $query);
     }
 }

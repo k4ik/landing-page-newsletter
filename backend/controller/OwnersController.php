@@ -1,15 +1,15 @@
 <?php
 namespace Controller;
 
-require 'vendor/includes/con.php';
+require __DIR__.'/../includes/con.php';
 
 class OwnersController
 {
-    private $con;
+    private $dbconn;
 
-    public function __construct($con)
+    public function __construct($dbconn)
     {
-        $this->con = $con;
+        $this->con = $dbconn;
     }
 
     public function getNewsletterOwners()
@@ -22,20 +22,20 @@ class OwnersController
 
     public function addOwner($email, $password)
     {
-        if(empty($email) || empty($password)) {
-            return json_encode(["error" => "Preencha os campos"]);
+        if (empty($email) || empty($password)) {
+            return json_encode(["error" => "Fill in all fields!"]);
         }
 
         $query = "INSERT INTO newsletter_owners(email, password) VALUES($email, $password)";
         
-        if(pg_query($this->con, $query)) {
-            return json_encode(["success" => "Proprietário adicionado com sucesso"]);
+        if (pg_query($this->con, $query)) {
+            return json_encode(["success" => "Owner added successfully!"]);
         }
     }
 
-    public function deleteOwner($id) 
+    public function deleteOwner($id)
     {
         $query = "UPDATE newsletter_members SET visible = 1 WHERE id = $id";
-        pg_query($this->con , $query);
+        pg_query($this->con, $query);
     }
 }

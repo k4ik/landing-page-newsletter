@@ -5,21 +5,23 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
+require_once __DIR__ . '/../includes/con.php';
+
 class PostController
 {
-    private $con;
+    private $dbconn;
 
-    public function __construct($con)
+    public function __construct($dbconn)
     {
-        $this->con = $con;
-        $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__ . '/../../'); 
+        $this->con = $dbconn;
+        $dotenv    = \Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
         $dotenv->load();
     }
 
     public function createPost($title, $content)
     {
         if (empty($title) || empty($content)) {
-            echo json_encode(["error" => "Preencha os campos"]);
+            echo json_encode(["error" => "Fill in all fields!"]);
             return;
         }
 
@@ -43,19 +45,19 @@ class PostController
             $mail->isHTML(true);
             $mail->CharSet = 'UTF-8';
             $mail->Subject = "=?UTF-8?B?" . base64_encode("$title") . "?=";
-            $mail->Body = "<h1>$title</h1>";
+            $mail->Body    = "<h1>$title</h1>";
             $mail->Body .= "<pre>$content</pre>";
 
             $mail->send();
-            echo json_encode(["success" => "Post publicado com sucesso!"]);
+            echo json_encode(["success" => "Post published successfully!"]);
         } catch (Exception $e) {
-            echo json_encode(["error" => "Erro ao tentar publicar o post!"]);
+            echo json_encode(["error" => "Error when trying to publish the post!"]);
         }
     }
 
-    public function getEmails() 
+    public function getEmails()
     {
-        $query = "SELECT email FROM newsletter";
+        $query  = "SELECT email FROM newsletter";
         $emails = pg_fetch_all(pg_query($this->con, $query));
         return $emails;
     }
