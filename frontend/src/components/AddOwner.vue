@@ -66,7 +66,7 @@ export default {
                 const data = await response.json();
 
                 if (data.success) {
-                    this.$emit('fetchData'); // Notificar o pai para atualizar os owners
+                    this.$emit('fetchData'); 
                     this.$emit('closeOverlay');
                 } else {
                     console.error(data.error);
