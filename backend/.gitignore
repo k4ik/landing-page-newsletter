@@ -1,2 +1,5 @@
 .env
 vendor/*
+.php_cs.dist
+.php-cs-fixer.cache
+.php-cs-fixer.dist.php
