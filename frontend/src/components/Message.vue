@@ -6,10 +6,10 @@
 
 <script>
 export default {
-    props: ["message"]
-}
+    props: ['message'],
+};
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/scss/message";
+@import '../assets/scss/message';
 </style>

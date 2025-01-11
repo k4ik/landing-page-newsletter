@@ -1,18 +1,16 @@
 <template>
     <header>
-        <img src="../assets/images/logo.svg" alt="tailwind logo">
+        <img src="../assets/images/logo.svg" alt="tailwind logo" />
         <nav>
-            <button @click="$emit('openOverlay')">Cadastrar</button>
+            <button @click="$emit('openOverlay')">Sign Up</button>
         </nav>
     </header>
 </template>
 
 <script>
-    export default {
-        
-    }
+export default {};
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/scss/header";
+@import '../assets/scss/header';
 </style>

@@ -1,29 +1,34 @@
 <template>
-    <div class="popup_container"  v-if="showPopup">
+    <div class="popup_container" v-if="showPopup">
         <div class="popup_header">
             <button @click="closePopup">X</button>
         </div>
         <div class="popup_content">
-            <p>Este site utiliza cookies para garantir a melhor experiência possível para você. Ao continuar navegando, você concorda com o uso de cookies. Para mais informações, consulte nossa <a href="#">Política de Privacidade</a>.</p>
+            <p>
+                This site uses cookies to ensure the best possible experience
+                for you. By continuing to browse, you agree to the use of
+                cookies. For more information, see our
+                <a href="#">Privacy Policy</a>.
+            </p>
         </div>
     </div>
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
-                showPopup: true,
-            }
+export default {
+    data() {
+        return {
+            showPopup: true,
+        };
+    },
+    methods: {
+        closePopup() {
+            this.showPopup = false;
         },
-        methods: {
-            closePopup() {
-                this.showPopup = false;
-            }
-        }
-    }
+    },
+};
 </script>
 
 <style lang="scss" scoped>
-    @import "../assets/scss/popup";
+@import '../assets/scss/popup';
 </style>
